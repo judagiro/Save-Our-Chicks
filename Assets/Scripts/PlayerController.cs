@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Bullet;
     public GameObject BulletPosition;
+    public GameObject Explosion;
 
     public float speed;
     private Transform _Transform;
@@ -52,5 +53,20 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
         
 
+    }
+
+    void OnTriggerEnter2D(Collider2D colider)
+    {
+        if ((colider.tag == "Enemy") || colider.tag == "Enemy Bullet")
+        {
+            PlayExplosion();
+            Destroy(gameObject);
+        }
+    }
+
+    void PlayExplosion()
+    {
+        GameObject _explosion = (GameObject)Instantiate(Explosion);
+        _explosion.transform.position = transform.position;
     }
 }

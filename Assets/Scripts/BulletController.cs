@@ -26,4 +26,12 @@ public class BulletController : MonoBehaviour
         }
 	
 	}
+
+    void OnTriggerEnter2D(Collider2D colider)
+    {
+        if (colider.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
